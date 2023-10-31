@@ -16,6 +16,7 @@ class EmployeeMockTest {
     }
 
     @Test
+    //Test cu date invalide
     void TC01_addEmployee() {
 
         Employee newEmployee = new Employee();
@@ -36,6 +37,7 @@ class EmployeeMockTest {
     }
 
     @Test
+    //Test cu date valide
     void TC02_addEmployee() {
 
         Employee newEmployee = new Employee();
@@ -54,5 +56,21 @@ class EmployeeMockTest {
         // Check if the new employee is in the list
         assertTrue(employeeMock.getEmployeeList().contains(newEmployee));
 
+    }
+
+    @Test
+    //Test cu date valide - se modifica functia unui angajat din Lecturer in Conferentiar
+    void TC_01_modifyEmployeeFunction1() {
+
+        Employee employee = new Employee(2,"Ion", "Dumitrescu", "1234567890876", DidacticFunction.LECTURER, 2500d);
+        employeeMock.modifyEmployeeFunction(employee,DidacticFunction.CONFERENTIAR);
+        assertEquals(DidacticFunction.CONFERENTIAR, employeeMock.findEmployeeById(employee.getId()).getFunction());
+    }
+
+    @Test
+    //Test cu date invalide - angajat null - se arunca exceptie - NullPointerException
+    void TC_02_modifyEmployeeFunction(){
+        assertThrows(NullPointerException.class, () ->
+                employeeMock.modifyEmployeeFunction(null, DidacticFunction.TEACHER));
     }
 }
