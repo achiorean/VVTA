@@ -16,12 +16,12 @@ public class EmployeeMock implements EmployeeRepositoryInterface {
 		employeeValidator = new EmployeeValidator();
 		employeeList = new ArrayList<Employee>();
 		
-		Employee Ionel = new Employee("Marius", "Pacuraru", "1234567890876", DidacticFunction.ASISTENT, 2500d);
-		Employee Mihai = new Employee("Ion", "Dumitrescu", "1234567890876", DidacticFunction.LECTURER, 2500d);
-		Employee Ionela = new Employee("Gicu", "Ionescu", "1234567890876", DidacticFunction.LECTURER, 2500d);
-		Employee Mihaela = new Employee("Dodel", "Pacuraru", "1234567890876", DidacticFunction.ASISTENT, 2500d);
-		Employee Vasile = new Employee("Dorel", "Georgescu", "1234567890876", DidacticFunction.TEACHER, 2500d);
-		Employee Marin   = new Employee("Larson", "Puscas", "1234567890876", DidacticFunction.TEACHER,  2500d);
+		Employee Ionel = new Employee(1,"Marius", "Pacuraru", "1234567890876", DidacticFunction.ASISTENT, 2500d);
+		Employee Mihai = new Employee(2,"Ion", "Dumitrescu", "1234567890876", DidacticFunction.LECTURER, 2500d);
+		Employee Ionela = new Employee(3,"Gicu", "Ionescu", "1234567890876", DidacticFunction.LECTURER, 2500d);
+		Employee Mihaela = new Employee(4,"Dodel", "Pacuraru", "1234567890876", DidacticFunction.ASISTENT, 2500d);
+		Employee Vasile = new Employee(5,"Dorel", "Georgescu", "1234567890876", DidacticFunction.TEACHER, 2500d);
+		Employee Marin   = new Employee(6,"Larson", "Puscas", "1234567890876", DidacticFunction.TEACHER,  2500d);
 		
 		employeeList.add(Ionel);
 		employeeList.add(Mihai);
@@ -62,6 +62,9 @@ public class EmployeeMock implements EmployeeRepositoryInterface {
 				i++;
 			}
 		}
+		else {
+			throw new NullPointerException("The employee is null. Please provide a valid value for employee.");
+		}
 	}
 
 	@Override
@@ -75,10 +78,13 @@ public class EmployeeMock implements EmployeeRepositoryInterface {
 		return null;
 	}
 
+
 	@Override
-	public Employee findEmployeeById(int idOldEmployee) {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee findEmployeeById(int idOfEmployee) {
+		for (Employee employee: employeeList){
+			if (employee.getId() == idOfEmployee) return employee;// Found the employee with the specified ID
+		}
+		return null;// Employee with specific id not found
 	}
 
 }

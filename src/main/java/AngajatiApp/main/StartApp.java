@@ -6,6 +6,7 @@ import AngajatiApp.repository.EmployeeImpl;
 //import repository.EmployeeMock;
 import AngajatiApp.repository.EmployeeRepositoryInterface;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 import AngajatiApp.controller.EmployeeController;
@@ -60,6 +61,8 @@ public class StartApp {
 	}
 
 	private static Employee getEmployeeFromInput() {
+		System.out.println("Employee id: ");
+		int id = scanner.nextInt();
 		System.out.println("First name: ");
 		String firstName = scanner.next();
 		System.out.println("Last name: ");
@@ -70,7 +73,7 @@ public class StartApp {
 		String didacticFuntion = scanner.next();
 		System.out.println("Salary: ");
 		Double salary = scanner.nextDouble();
-		return new Employee(firstName, lastName, cnp, getDidacticFunction(didacticFuntion), salary);
+		return new Employee(id,firstName, lastName, cnp, getDidacticFunction(didacticFuntion), salary);
 	}
 	
 	private static DidacticFunction getDidacticFunction(String didacticFunction) {
