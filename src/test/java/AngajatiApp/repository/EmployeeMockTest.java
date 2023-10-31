@@ -60,7 +60,7 @@ class EmployeeMockTest {
 
     @Test
     //Test cu date valide - se modifica functia unui angajat din Lecturer in Conferentiar
-    void TC_01_modifyEmployeeFunction1() {
+    void TC_01_modifyEmployeeFunction() {
 
         Employee employee = new Employee(2,"Ion", "Dumitrescu", "1234567890876", DidacticFunction.LECTURER, 2500d);
         employeeMock.modifyEmployeeFunction(employee,DidacticFunction.CONFERENTIAR);
